@@ -1,0 +1,32 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>화상회의 및 관절 시각화</title>
+    <style>
+        body { display: flex; flex-direction: column; align-items: center; }
+        video { width: 45%; margin: 10px; border: 1px solid #000; }
+        canvas { position: absolute; top: 0; left: 0; }
+    </style>
+</head>
+<body>
+    <h1>화상회의 및 관절 시각화</h1>
+    <div>
+        <video id="localVideo" autoplay muted></video>
+        <video id="remoteVideo" autoplay></video>
+        <canvas id="jointCanvas"></canvas>
+    </div>
+    <button id="startBtn">회의 시작</button>
+    <button id="stopBtn">회의 종료</button>
+
+    <!-- Socket.IO 라이브러리 -->
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
+            integrity="sha384-f2+YCF3w0QtKDrHwvSTGcNxpGzl5XZHoQXN1CrnWn3fTbP4YVw6Xw5eXkURiKkAa"
+            crossorigin="anonymous"></script>
+    <!-- MediaPipe 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.4/pose.js"></script>
+    <!-- Script 파일 -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
